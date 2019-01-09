@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2017-09-23T22:14:00 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Recon_firma_01" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="0" rightMargin="20" topMargin="0" bottomMargin="20" uuid="c3a6b4c6-7d05-447d-8d4f-7b45cc7c5c42">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Cartorio"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="subRel" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT cadastro.tblreconfirma.id_pessoa,
+	cadastro.tblreconfirma.id_selo,
+	cadastro.tblreconfirma.tipo_reconhecimento,
+	cadastro.tblselos.data_ato,
+	cadastro.tblselos.letras,
+	cadastro.tblselos.selos,
+	cadastro.tblselos.custo,
+	cadastro.tblpessoas.nome_pessoa
+FROM cadastro.tblreconfirma
+	INNER JOIN cadastro.tblselos ON 
+	 cadastro.tblreconfirma.id_selo = cadastro.tblselos.id 
+	INNER JOIN cadastro.tblpessoas ON 
+	 cadastro.tblreconfirma.id_pessoa = cadastro.tblpessoas.id
+	 where cadastro.tblreconfirma.id_selo = $P{subRel}]]>
+	</queryString>
+	<field name="id_pessoa" class="java.lang.Integer"/>
+	<field name="id_selo" class="java.lang.Integer"/>
+	<field name="tipo_reconhecimento" class="java.lang.String"/>
+	<field name="data_ato" class="java.sql.Date"/>
+	<field name="letras" class="java.lang.String"/>
+	<field name="selos" class="java.lang.Integer"/>
+	<field name="custo" class="java.lang.String"/>
+	<field name="nome_pessoa" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="174" splitType="Stretch">
+			<rectangle>
+				<reportElement x="2" y="3" width="245" height="171" uuid="af6a18a3-cc7d-4d1b-9d8d-78863d1cc320"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="31" y="7" width="172" height="11" uuid="5fc0379b-7d59-4ecb-8eaf-ca20ba052185">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Poder Judiciario do Estado de Mato Grosso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="18" width="224" height="11" uuid="00b8721d-a65f-4172-be93-a6efc606d34f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cartorio de Notas e Registro Civil de São José do Xingu-MT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="30" width="100" height="11" uuid="2418632f-80a7-4971-9a7b-222fc7b645d7"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Atos de Notas e Registro]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="44" width="242" height="1" uuid="8b139586-ad97-441d-9312-2e296a80c27e"/>
+			</line>
+			<textField>
+				<reportElement x="5" y="48" width="240" height="55" uuid="7b467c5f-fb62-455d-ac0c-d8d8cd110be0">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA["Reconheço assinatura de "+$F{nome_pessoa} +" por " + $F{tipo_reconhecimento}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd&apos; de &apos;MMMM&apos; de &apos;yyyy">
+				<reportElement x="118" y="105" width="126" height="15" uuid="8dc7ba45-180d-4508-9187-fa5744b405be">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{data_ato}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="4" y="126" width="242" height="1" uuid="df6d8c5c-7ce4-451d-ac47-29288bb7baf2"/>
+			</line>
+			<textField>
+				<reportElement x="51" y="130" width="71" height="11" uuid="a1b64103-6fdb-45d7-b2a8-42e77929159d">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{letras} + $F{selos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="130" width="46" height="11" uuid="6417f629-ebb0-4d2c-b361-fb997f9ba8f5">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Selo digital:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="130" width="81" height="11" uuid="b05c75f3-6243-47e6-9cd9-4d7f6bbb410b"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Codigo Ato: 22]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="143" width="75" height="11" uuid="b73f58f0-db50-41d1-9c26-88f602e3aa1b">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Codigo cartorio: 188]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="142" width="28" height="11" uuid="750c2be9-7a77-407d-bf15-5240509074c4">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Custo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="155" width="166" height="11" uuid="f9fbe7fc-50a7-4455-94d3-1e89e5982f1c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Consultar em: http://www.tjmt.jus.br/selos/]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="6" y="105" width="112" height="15" uuid="b01291f9-9123-45cf-9328-8d73ffd346bb">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA["São Jose do Xingu-MT,"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="169" y="142" width="35" height="11" uuid="672e8eae-69ce-44e0-8afa-4662d6d85319">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{custo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

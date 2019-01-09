@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2017-06-30T10:12:30 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Impressao_Selo" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0ec256df-3a79-4ff8-9c1c-e24378df00df">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Cartorio"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="codigo_ato" class="java.lang.Integer"/>
+	<parameter name="codigo_cartorio" class="java.lang.Integer"/>
+	<parameter name="id_selo" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT cadastro.tblselos.letras,
+	cadastro.tblselos.selos
+FROM cadastro.tblselos where cadastro.tblselos.id = $P{id_selo}]]>
+	</queryString>
+	<field name="letras" class="java.lang.String"/>
+	<field name="selos" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="114" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<rectangle>
+				<reportElement x="-2" y="1" width="229" height="99" uuid="46a459a5-2d8a-4bf8-bd22-5de9f3d26322"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="20" y="2" width="172" height="11" uuid="e6cae6c5-b1d8-494a-9b51-8fd779708194">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Poder Judiciario do Estado de Mato Grosso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="25" width="100" height="11" uuid="e7447356-6a41-4aea-9d66-159ae76484d0"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Atos de Notas e Registro]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="46" width="46" height="11" uuid="85e28d1c-7156-40b0-818a-aaf83f16662d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{selos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="49" y="57" width="58" height="11" uuid="3cabdea5-92d6-4516-b8ab-ac9204b69845"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{codigo_ato}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="57" width="45" height="11" uuid="29470b9f-31f9-4b93-9c1d-12177e68726b"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Codigo Ato:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="69" width="57" height="11" uuid="80b55a48-1eab-4733-9bdd-a8c622c07d1f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Codigo cartorio:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="46" y="46" width="25" height="11" uuid="1f1977c0-b452-48db-a7c3-ffaa30f0db0a">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{letras}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="46" width="42" height="11" uuid="18814e33-c228-4120-8dc8-b92563c3794b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Selo digital:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="61" y="69" width="46" height="11" uuid="926a77e2-a42b-4f5b-965a-19f3df0e503e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{codigo_cartorio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="13" width="224" height="11" uuid="de91f528-6d99-433c-a072-8b2a40c7f4ad">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cartorio de Notas e Registro Civil de São José do Xingu-MT]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-2" y="36" width="229" height="1" uuid="0a178b18-7144-4150-b50f-7cedb38b8761"/>
+			</line>
+			<staticText>
+				<reportElement x="4" y="81" width="166" height="11" uuid="0a4fa809-0e93-4c25-88f2-3c7267ab53f2">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Consultar em: http://www.tjmt.jus.br/selos/]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
